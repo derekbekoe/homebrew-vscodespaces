@@ -4,6 +4,14 @@
 brew install microsoft/vsonline/vso
 ```
 
+You can now run the `vso register` to get started.
+
+To upgrade to the latest version, run:
+
+```
+brew upgrade vso
+```
+
 Learn more about using self-hosted environments by [reading the quickstart](https://docs.microsoft.com/en-us/visualstudio/online/how-to/vscode#self-hosted).
 
 ## Microsoft Open Source Code of Conduct

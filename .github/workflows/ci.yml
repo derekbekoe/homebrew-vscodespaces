@@ -1,0 +1,32 @@
+#
+name: Homebrew Formula
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  checks:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      # See https://brew.sh
+      - name: Install homebrew prerequisite
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      # See https://docs.brew.sh/Formula-Cookbook#install-the-formula
+      - name: brew install (Verify install of formula)
+        run: |
+          brew install --verbose --build-from-source ./Formula/vso.rb
+      # See https://docs.brew.sh/Formula-Cookbook#add-a-test-to-the-formula
+      - name: brew test (Verify tests in formula)
+        run: |
+          brew test vso
+      # See https://docs.brew.sh/Formula-Cookbook#audit-the-formula
+      - name: brew audit (Audit formula)
+        run: |
+          brew audit --strict --online --display-filename --display-cop-names vso
+      # Check that the formula name isn't also used in homebrew-core - see https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap#naming-your-formulae-to-avoid-clashes
+      - name: brew search (Verify formula name not in homebrew-core)
+        run: |
+          brew search vso
