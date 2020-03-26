@@ -31,6 +31,7 @@ class Vso < Formula
   end
 
   test do
+    system bin/"vso"
     system bin/"vso", "--help"
     system bin/"vso", "--version"
   end
