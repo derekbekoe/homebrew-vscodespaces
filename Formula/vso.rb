@@ -6,7 +6,7 @@ class Vso < Formula
   desc "Visual Studio Online Self-Hosted Agent"
   homepage "https://online.visualstudio.com"
   # We do not specify `version "..."` as 'brew audit' will complain as the version is already in the URL - see https://github.com/Homebrew/legacy-homebrew/issues/32540
-  url "https://vsoagentdownload.blob.core.windows.net/homebrew/VSOAgent_osx_3552852.zip"
+  url "https://vsoagentdownloads.blob.core.windows.net/vsoagent/VSOAgent_osx_3552852.zip"
   # make sure sha256 is lowercase.
   sha256 "3dc62ded13434d8302d8d31612a1f99dc91d484f033fe3c5ca63c9baf58d8a8e"
   bottle :unneeded
