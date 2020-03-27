@@ -14,6 +14,8 @@ brew upgrade vso
 
 Learn more about using self-hosted environments by [reading the quickstart](https://docs.microsoft.com/en-us/visualstudio/online/how-to/vscode#self-hosted).
 
+Issues can be reported at [MicrosoftDocs/vsonline](https://github.com/MicrosoftDocs/vsonline/issues).
+
 ## Microsoft Open Source Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
