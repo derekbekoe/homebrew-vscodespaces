@@ -1,0 +1,78 @@
+name: Action
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  schedule:
+    # 16:00 and 23:00 UTC daily
+    - cron:  '0 16,23 * * *'
+env:
+  FORMULA_PATH: ./Formula/vso.rb
+  UPDATE_SCRIPT_PATH: ./scripts/update_formula.py
+jobs:
+  homebrew-formula:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      # See https://brew.sh
+      - name: Install homebrew prerequisite
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      - name: (scheduled-auto-release) Auto-update formula
+        if: github.event_name == 'schedule'
+        run: |
+
+          python3 --version
+          NEW_FORMULA_VERSION=$(python3 $UPDATE_SCRIPT_PATH $FORMULA_PATH)
+          # set env variable for later steps to use
+          echo "::set-env name=NEW_FORMULA_VERSION::$NEW_FORMULA_VERSION"
+      # See https://docs.brew.sh/Formula-Cookbook#install-the-formula
+      - name: brew install (Verify install of formula)
+        run: |
+          brew install --verbose --build-from-source $FORMULA_PATH
+      # See https://docs.brew.sh/Formula-Cookbook#audit-the-formula
+      - name: brew audit (Audit formula)
+        run: |
+          brew audit --strict --online --display-filename --display-cop-names vso
+      # See https://docs.brew.sh/Formula-Cookbook#add-a-test-to-the-formula
+      - name: brew test (Verify tests in formula)
+        run: |
+          brew test vso
+      # Check that the formula name isn't also used in homebrew-core - see https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap#naming-your-formulae-to-avoid-clashes
+      - name: brew search (Verify formula name not in homebrew-core)
+        run: |
+          brew search vso
+      - name: (scheduled-auto-release) Commit & Push changes
+        if: github.event_name == 'schedule'
+        run: |
+
+          git diff
+          if git diff --exit-code $FORMULA_PATH
+          then
+            echo "Nothing to do."
+          else
+            echo "Pushing changes."
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add $FORMULA_PATH
+            if [ -z "$NEW_FORMULA_VERSION" ]
+            then
+                  git commit -m "Update formula version"
+            else
+                  git commit -m "Update formula to version $NEW_FORMULA_VERSION"
+            fi
+            git push "https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
+          fi
+  check-scripts:
+    runs-on: macos-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Check scripts
+        run: |
+
+          python3 --version
+          python3 -m py_compile $UPDATE_SCRIPT_PATH
