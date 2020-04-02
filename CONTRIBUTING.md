@@ -1,5 +1,32 @@
 # Contributing
 
+## Formula Updates
+
+This repository will publish updates to the formula automatically.
+
+Below are steps if you manually need to submit a PR to make changes.
+
+To update the version, modify the url and sha256 in the formula. To get the new sha256 value, you can run `brew fetch --build-from-source ./Formula/vso.rb`.
+
+#### Local verification:
+```
+# Ensure you remove any current install of VSO
+brew uninstall vso
+# Check you can install the new formula
+brew install --verbose --build-from-source ./Formula/vso.rb
+# Run brew audit
+brew audit --strict --online --display-filename --display-cop-names ./Formula/vso.rb
+# Run the tests in the formula
+brew test ./Formula/vso.rb
+```
+
+#### CI verification:
+The repository has CI checks to validate the formula changes.\
+Submit a PR to have the checks run.\
+Ensure checks have passed before PRs are merged.
+
+## Contributions
+
 This project welcomes contributions and suggestions. Most contributions require you to
 agree to a Contributor License Agreement (CLA) declaring that you have the right to,
 and actually do, grant us the rights to use your contribution. For details, visit
