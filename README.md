@@ -4,7 +4,7 @@
 brew install microsoft/vsonline/vso
 ```
 
-You can now run the `vso register` to get started.
+You can now run the `vso start` to get started.
 
 To upgrade to the latest version, run:
 
