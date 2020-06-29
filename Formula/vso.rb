@@ -4,9 +4,9 @@ class Vso < Formula
   desc "Visual Studio Online Self-Hosted Agent"
   homepage "https://online.visualstudio.com"
   # We do not specify `version "..."` as 'brew audit' will complain - see https://github.com/Homebrew/legacy-homebrew/issues/32540
-  url "https://vsoagentdownloads.blob.core.windows.net/vsoagent/VSOAgent_osx_3808108.zip"
+  url "https://vsoagentdownloads.blob.core.windows.net/vsoagent/VSOAgent_osx_3827361.zip"
   # must be lower-case
-  sha256 "5e015e3dceb6bf9bae2048e49f4f58fec15ac60a856b0175512e72810e68a9b4"
+  sha256 "dc370601925094f757d9cedff61d5404548c7fb8a5dfba399420ed0cc1bc0d0c"
   bottle :unneeded
 
   # .NET Core 3.1 requires High Sierra - https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?pivots=os-macos&tabs=netcore31
