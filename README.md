@@ -1,20 +1,20 @@
-**Homebrew tap for Visual Studio Online.**
+**Homebrew tap for Visual Studio Codespaces.**
 
 ```
-brew install microsoft/vsonline/vso
+brew install microsoft/vscodespaces/codespaces
 ```
 
-You can now run the `vso start` to get started.
+You can now run the `codespaces start` to get started.
 
 To upgrade to the latest version, run:
 
 ```
-brew upgrade vso
+brew upgrade codespaces
 ```
 
 Learn more about using self-hosted environments by [reading the quickstart](https://docs.microsoft.com/en-us/visualstudio/online/how-to/vscode#self-hosted).
 
-Issues can be reported at [MicrosoftDocs/vsonline](https://github.com/MicrosoftDocs/vsonline/issues).
+Issues can be reported at [MicrosoftDocs/vscodespaces](https://github.com/MicrosoftDocs/vscodespaces/issues).
 
 ## Microsoft Open Source Code of Conduct
 

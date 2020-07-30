@@ -11,7 +11,7 @@ on:
     # At 16:00 UTC on every day-of-week from Monday through Friday.
     - cron:  '0 16 * * 1-5'
 env:
-  FORMULA_PATH: ./Formula/vso.rb
+  FORMULA_PATH: ./Formula/codespaces.rb
   UPDATE_SCRIPT_PATH: ./scripts/update_formula.py
 jobs:
   homebrew-formula:
@@ -58,9 +58,9 @@ jobs:
             git add $FORMULA_PATH
             if [ -z "$NEW_FORMULA_VERSION" ]
             then
-                  git commit -m "Update vso formula version"
+                  git commit -m "Update codespaces formula version"
             else
-                  git commit -m "Update vso formula to version $NEW_FORMULA_VERSION"
+                  git commit -m "Update codespaces formula to version $NEW_FORMULA_VERSION"
             fi
             git push "https://${GITHUB_ACTOR}:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master
           fi

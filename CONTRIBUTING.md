@@ -6,18 +6,18 @@ This repository will publish updates to the formula automatically.
 
 Below are steps if you manually need to submit a PR to make changes.
 
-To update the version, modify the url and sha256 in the formula. To get the new sha256 value, you can run `brew fetch --build-from-source ./Formula/vso.rb`.
+To update the version, modify the url and sha256 in the formula. To get the new sha256 value, you can run `brew fetch --build-from-source ./Formula/codespaces.rb`.
 
 #### Local verification:
 ```
-# Ensure you remove any current install of VSO
-brew uninstall vso
+# Ensure you remove any current install of codespaces
+brew uninstall codespaces
 # Check you can install the new formula
-brew install --verbose --build-from-source ./Formula/vso.rb
+brew install --verbose --build-from-source ./Formula/codespaces.rb
 # Run brew audit
-brew audit --strict --online --display-filename --display-cop-names ./Formula/vso.rb
+brew audit --strict --online --display-filename --display-cop-names ./Formula/codespaces.rb
 # Run the tests in the formula
-brew test ./Formula/vso.rb
+brew test ./Formula/codespaces.rb
 ```
 
 #### CI verification:
