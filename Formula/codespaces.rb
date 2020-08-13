@@ -4,9 +4,9 @@ class Codespaces < Formula
   desc "Visual Studio Codespaces Self-Hosted Agent"
   homepage "https://online.visualstudio.com"
   # We do not specify `version "..."` as 'brew audit' will complain - see https://github.com/Homebrew/legacy-homebrew/issues/32540
-  url "https://vsoagentdownloads.blob.core.windows.net/vsoagent/VSOAgent_osx_3938631.zip"
+  url "https://vsoagentdownloads.blob.core.windows.net/vsoagent/VSOAgent_osx_3958053.zip"
   # must be lower-case
-  sha256 "67f4dc49762ae9b55fde204ad1227d22b55549634a3c7410f5209a530e1e9160"
+  sha256 "a50ccdbcd94069a02f5f78309c314c6347b4ac007bf5c8258c551b6ee03d2649"
   bottle :unneeded
 
   # .NET Core 3.1 requires High Sierra - https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?pivots=os-macos&tabs=netcore31
