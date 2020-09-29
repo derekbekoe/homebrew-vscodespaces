@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT license.
 class Codespaces < Formula

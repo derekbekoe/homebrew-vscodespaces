@@ -9,6 +9,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+/pythonenv3.8/
 
 ## Documentation cache and generated files:
 /.yardoc/
