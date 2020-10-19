@@ -1,6 +1,10 @@
 # Contributing
 
-## Formula Updates
+### Installing Homebrew
+
+See https://brew.sh/
+
+### Formula Updates
 
 This repository will publish updates to the formula automatically.
 
@@ -8,7 +12,7 @@ Below are steps if you manually need to submit a PR to make changes.
 
 To update the version, modify the url and sha256 in the formula. To get the new sha256 value, you can run `brew fetch --build-from-source ./Formula/codespaces.rb`.
 
-#### Local verification:
+### Local verification
 ```
 # Ensure you remove any current install of codespaces
 brew uninstall codespaces
@@ -20,7 +24,7 @@ brew audit --strict --online --display-filename --display-cop-names ./Formula/co
 brew test ./Formula/codespaces.rb
 ```
 
-#### CI verification:
+### CI verification
 The repository has CI checks to validate the formula changes.\
 Submit a PR to have the checks run.\
 Ensure checks have passed before PRs are merged.
